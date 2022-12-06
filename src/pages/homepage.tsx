@@ -21,7 +21,6 @@ function HomePage({ token, setToken }: HomePageProps) {
     }
   }, []);
 
-  console.log(data.user);
   return (
     <>
       <Navbar token={token} setToken={setToken} />
