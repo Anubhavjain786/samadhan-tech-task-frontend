@@ -27,6 +27,7 @@ function LoginForm({ setToken }: LoginFormProps) {
     basicLogin({ variables: { email: data.email, password: data.password } });
 
   const [loginFromFB, { data, loading: fbLoading, error }] = service.fbLogin();
+
   const [basicLogin, { data: loginData, loading }] = service.basicLogin();
 
   useEffect(() => {
@@ -52,7 +53,10 @@ function LoginForm({ setToken }: LoginFormProps) {
         function (response: any) {
           if (response && !response.error) {
             loginFromFB({
-              variables: { name: response.name, email: response.email },
+              variables: {
+                name: response.name,
+                email: response.email || "No email",
+              },
             });
           }
         }

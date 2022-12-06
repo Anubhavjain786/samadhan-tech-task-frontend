@@ -60,7 +60,10 @@ function SignUpForm({ setToken }: SignUpFormProps) {
         function (response: any) {
           if (response && !response.error) {
             logintoFb({
-              variables: { name: response.name, email: response.email },
+              variables: {
+                name: response.name,
+                email: response.email || "No Email",
+              },
             });
           }
         }
